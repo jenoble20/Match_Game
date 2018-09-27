@@ -1,0 +1,56 @@
+
+
+html{
+  font-size: 14px;
+}
+
+body{
+  font-family: "Work Sans", sans-serif;
+  background-color: rgb(255,242,242);
+}
+
+.main{
+  margin-top: 5.25rem;
+}
+
+/**INSTRUCTIONS STYLING**/
+
+#instructions h1{
+  font-size: 2.5rem;
+}
+
+#instructions h3{
+  font-size: 1rem;
+}
+
+.heading{
+  font-weight: 700;
+  color: rgb(32,64,86);
+}
+
+#instructions p{
+  color: rgb(74,74,74);
+}
+
+
+/**GAME BOARD STYLING**/
+
+#game-board .card{
+  max-width: 12.5rem;
+  min-width: 12.5rem;
+  max-height: 12.5rem;
+  min-height: 12.5rem;
+  border: 4px solid #fff;
+  border-radius: 8px;
+  background-color: rgb(32,64,86);
+
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 7rem;
+  color: rgb(255,255,255)
+}
+
+#game-board .card:hover{
+  cursor: pointer;
+}

@@ -2,14 +2,74 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Match Game</title>
-    <link src="Resources/CSS/reset.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link href="./Resources/CSS/reset.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link src="Resources/CSS/style.css" rel="stylesheet" type="text/css">
+    <link href="./Resources/CSS/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+    <!--ENTIRE SITE IS NESTED WITHIN A SINGLE BOOTSTRAP CONTAINER-->
+    <div class="main container">
+      <div class="row">
+
+        <!--INSTRUCTIONS SECTION-->
+        <div id="instructions" class="col-lg-3 col-sm-12">
+          <h1 class="heading">Match Game</h1>
+          <h3 class="heading">Rules</h3>
+          <p>Click on a card to reveal the number on the other side. Click on a
+            second card to try and find a match to the first. If you succeed,
+            the pair will be removed from play. If not, try again!</p>
+          <h3 class="heading">How to win</h3>
+          <p>You win when all pairs have been found.</p>
+        </div>
+
+        <!--GAME BOARD SECTION-->
+        <!--Game board consists of 16 cards that the user will interact with-->
+        <div id="game-board" class="col-lg-9 col-sm-12">
+          <div class="row">
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+            <div class="card col-lg-3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+    <!--SCRIPTS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="Resources/JS/main.js"></script>
     <script type="text/javascript" src="Resources/JS/tests.js"></script>
