@@ -1,3 +1,11 @@
+
+/**********************************************************
+ 
+  TEST SUITE PROVIDED BY CODECADEMY FOR TESTING PURPOSES.
+  I DID NOT WRITE THIS CODE
+ 
+ **********************************************************/ 
+
 let MatchGameTests = {};
 
 MatchGameTests.runTests = function() {

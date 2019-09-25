@@ -6,7 +6,9 @@ let MatchGame = {};
 */
   $(document).ready(function(){
     MatchGame.renderCards(MatchGame.generateCardValues(), $('#game-board'));
-  })
+  });
+
+  
 /*
   Generates and returns an array of matching card values.
  */
@@ -59,9 +61,7 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-  console.log($card);
   if($card.data("flipped")){
-    console.log('TRUE');
     return
   }
 
@@ -73,7 +73,7 @@ MatchGame.flipCard = function($card, $game) {
   if($game.data('flipped-cards').length === 2){
     let cardOne = $game.data('flipped-cards')[0];
     let cardTwo = $game.data('flipped-cards')[1];
-    console.log(cardOne);
+
     if(cardOne.data('value')===cardTwo.data('value')){
       cardOne.css({
         'background-color': 'rgb(153,153,153)',
@@ -94,5 +94,30 @@ MatchGame.flipCard = function($card, $game) {
       },500)
     }
     $game.data('flipped-cards', []);
+    MatchGame.checkForWin($game);
   }
+};
+
+MatchGame.checkForWin = function($game){
+  let count = 0;
+  $game.children('.card').each(function(){
+    if($(this).data('flipped')){
+      count++;
+    }
+  });
+  if(count>=16){
+    const banner = `<div id='win-banner'>
+                      <h1>Congratulations! You win!</h1>
+                    </div>`
+     $('#game-container').prepend(banner)
+     $("#instructions").append('<button id="restart">Play Again!</button>')
+  
+     $('#restart').click(function(){
+      
+      $('#win-banner').remove();
+      MatchGame.renderCards(MatchGame.generateCardValues(), $('#game-board'));
+      $(this).remove();
+    });
+  }
+  return 0;
 };
