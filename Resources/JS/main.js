@@ -119,5 +119,4 @@ MatchGame.checkForWin = function($game){
       $(this).remove();
     });
   }
-  return 0;
 };
