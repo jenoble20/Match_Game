@@ -13,29 +13,29 @@
   </head>
   <body>
     <!--ENTIRE SITE IS NESTED WITHIN A SINGLE BOOTSTRAP CONTAINER-->
-    <div class="main container">
-      <div class="row">
-
+    <div class="main">
         <!--INSTRUCTIONS SECTION-->
-        <div id="instructions" class="col-lg-3 col-sm-12">
-          <h1 class="heading">Match Game</h1>
-          <h3 class="heading">Rules</h3>
-          <p>Click on a card to reveal the number on the other side. Click on a
-            second card to try and find a match to the first. If you succeed,
-            the pair will be removed from play. If not, try again!</p>
-          <h3 class="heading">How to win</h3>
-          <p>You win when all pairs have been found.</p>
-        </div>
+        <h1 class="heading">Match Game</h1>
 
         <!--GAME BOARD SECTION-->
         <!--Game board consists of 16 cards that the user will interact with-->
-        <div id='game-container' class="col-lg-9 col-sm-12">
-          <div id="game-board" class="row">
+        <div id='game-container'>
+          <div class="instructions">
+            <h3 class="heading">Rules</h3>
+            <p>
+              Click on a card to reveal the number on the other side. Click on a second card to try and find a match to the first.
+              If you succeed, the pair will be removed from play. If not, try again!
+            </p>
+          </div>
+          <div id="game-board">
             <!--Cards are created by MatchGame.renderCards() in main.js-->
             <!--Cards are inserted here-->
           </div>
+          <div class="endgame">
+            <h3 class="heading">How to win</h3>
+            <p>You win when all pairs have been found.</p>
+          </div>
         </div>
-      </div>
     </div>
 
     <!--SCRIPTS-->

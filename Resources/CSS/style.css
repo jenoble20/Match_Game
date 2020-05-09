@@ -5,55 +5,68 @@ html{
 }
 
 body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Work Sans", sans-serif;
-  background-color: rgb(255,242,242);
-}
-
-.main{
-  margin-top: 5.25rem;
+  background-color: rgb(90, 159, 206);
+  height: 100vh;
 }
 
 /**INSTRUCTIONS STYLING**/
 
-#instructions h1{
+h1{
   font-size: 2.5rem;
 }
 
-#instructions h3{
-  font-size: 1rem;
+h1,h3,p{
+  text-align: center;
+}
+
+h3{
+  font-size: 1.8rem;
+}
+p{
+  font-size: 1.3rem;
 }
 
 .heading{
   font-weight: 700;
-  color: rgb(32,64,86);
+  color: rgb(182, 89, 26);
 }
 
-#instructions p{
-  color: rgb(74,74,74);
+.instructions,
+.end-game {
+  max-width: 366px;
 }
-
 
 /**GAME BOARD STYLING**/
 
 #game-container{
   display: flex;
-  justify-content: center;
+  width: 100%;
+}
+
+#game-board{
+  display: grid;
+  flex: 40%;
+  grid-template-columns: repeat(4, 12.5rem);
+  grid-template-rows: repeat(4, 12.5rem);
 }
 
 #game-board .card{
-  max-width: 12.5rem;
-  min-width: 12.5rem;
-  max-height: 12.5rem;
-  min-height: 12.5rem;
-  border: 4px solid #fff;
-  border-radius: 8px;
+  opacity: 0;
   background-color: rgb(32,64,86);
   justify-content: center;
   align-items: center;
   font-weight: 900;
   font-size: 7rem;
-  color: rgb(255,255,255)
+  color: rgb(255,255,255);
+  margin: 0.1rem;
+  transition: opacity 2s;
 }
+
+
 
 #game-board .card:hover{
   cursor: pointer;

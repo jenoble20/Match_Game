@@ -34,24 +34,44 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
+  let correct = 0;
+  let clicks = 0;
+  let ratio = 0.0;
   $game.empty();
   $game.data('flipped-cards', []);
   const cardColors = ['hsl(25,85%,65%)','hsl(55,85%,65%)','hsl(90,85%,65%)',
                       'hsl(160,85%,65%)','hsl(220,85%,65%)','hsl(265,85%,65%)',
                       'hsl(310,85%,65%)','hsl(360,85%,65%)'];
 
+  let gridX = 0;
+  let gridY = 0;
+  let cardsArray = [];
+  for (let i = 0; i < cardValues.length; i++) {
 
-  for(let i=0; i<cardValues.length; i++){
-    let $card = $('<div class="card col-lg-3"></div>');
+    if (gridX == 4) {//Iterates to the next row of the grid
+      gridX = 0;
+      gridY++;
+    }
+    let $card = $('<div class="card"></div>');
     $card.data({
       value: cardValues[i],
       flipped: false,
-      color: cardColors[cardValues[i]-1]
+      color: cardColors[cardValues[i] - 1],
+      position: i
     });
     $game.append($card);
+    //Assign a position on the grid for the current card.
+    MatchGame.assignPosition($card, gridX, gridY);
+    cardsArray.push($card);
+    gridX++;
   }
+
+  MatchGame.setVisible(cardsArray);
+  
   $('.card').click(function() {
-    MatchGame.flipCard($(this), $('#game-board'));
+    clicks++;
+    correct = MatchGame.flipCard($(this), $('#game-board'), correct);
+    ratio = MatchGame.calculateRatio(correct,clicks);
   });
 }
 
@@ -60,9 +80,9 @@ MatchGame.renderCards = function(cardValues, $game) {
   Updates styles on flipped cards depending whether they are a match or not.
  */
 
-MatchGame.flipCard = function($card, $game) {
+MatchGame.flipCard = function($card, $game, c) {
   if($card.data("flipped")){
-    return
+    return c;
   }
 
   $card.text($card.data('value'));
@@ -83,6 +103,7 @@ MatchGame.flipCard = function($card, $game) {
         'background-color': 'rgb(153,153,153)',
         color: 'rgb(204,204,204)'
       });
+      c++;
     }else{
       window.setTimeout(function(){
         cardOne.css('background-color', 'rgb(32,64,86)');
@@ -96,6 +117,7 @@ MatchGame.flipCard = function($card, $game) {
     $game.data('flipped-cards', []);
     MatchGame.checkForWin($game);
   }
+  return c;
 };
 
 MatchGame.checkForWin = function($game){
@@ -120,3 +142,30 @@ MatchGame.checkForWin = function($game){
     });
   }
 };
+
+MatchGame.calculateRatio = function(num, den){
+  return Math.floor((num/den)*100);
+}
+
+MatchGame.setVisible = function(cardArray, iteration = 0){
+  cardArray[iteration].css('opacity', '1');
+  iteration++;
+  if(iteration<cardArray.length){
+    setTimeout(function(){
+      MatchGame.setVisible(cardArray, iteration)
+    }, 200);
+  }
+}
+
+MatchGame.assignPosition = function(card, x, y){
+  let xx = x+1;
+  let yy = y+1;
+  x = x.toString();
+  xx = xx.toString();
+  y = y.toString();
+  yy= yy.toString();
+  card.css({
+    'grid-row': `${y} / ${yy}`,
+    'grid-column': `${x} / ${xx})`
+  })
+}
